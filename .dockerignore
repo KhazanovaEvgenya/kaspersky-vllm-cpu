@@ -1,0 +1,10 @@
+.git
+.tools
+__pycache__
+**/__pycache__
+*.docx
+*.zip
+tests
+.env
+resolver.log
+secret*.yaml

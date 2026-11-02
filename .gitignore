@@ -1,0 +1,7 @@
+.tools/
+__pycache__/
+*.docx
+*.zip
+.env
+secret*.yaml
+resolver.log

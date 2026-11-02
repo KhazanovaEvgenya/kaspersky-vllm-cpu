@@ -1,0 +1,15 @@
+model: /cache/model
+served-model-name: qwen
+host: 0.0.0.0
+port: 8000
+dtype: float32
+max-model-len: 2048
+max-num-seqs: 4
+max-num-batched-tokens: 2048
+enforce-eager: true
+enable-log-requests: false
+enable-log-outputs: false
+disable-uvicorn-access-log: true
+log-config-file: /app/logging.json
+middleware:
+  - privacy.AuditMiddleware

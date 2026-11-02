@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - pvc.yaml
+  - deployment.yaml
+  - service.yaml
+configMapGenerator:
+  - name: inference-config
+    files:
+      - serve.yaml
+    literals:
+      - MODEL_ID=Qwen/Qwen2.5-0.5B-Instruct
+      - MODEL_REVISION=7ae557604adf67be50417f59c2c2f167def9a775
+      - VLLM_CPU_KVCACHE_SPACE=1
+      - OMP_NUM_THREADS=4
+      - VLLM_CPU_OMP_THREADS_BIND=auto
+      - HF_HUB_DISABLE_XET=1

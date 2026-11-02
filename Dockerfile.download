@@ -1,0 +1,10 @@
+FROM python:3.12.12-slim-bookworm
+RUN useradd --uid 10001 --create-home app
+WORKDIR /app
+COPY requirements-download.txt .
+RUN python -m pip install --no-cache-dir --no-deps --only-binary=:all: \
+    -r requirements-download.txt && python -m pip check
+COPY app/download_model.py .
+ENV PYTHONUNBUFFERED=1 HF_HOME=/cache/huggingface HF_HUB_DISABLE_XET=1
+USER 10001:10001
+ENTRYPOINT ["python", "/app/download_model.py"]
